@@ -8,6 +8,8 @@ import { SettingService } from '@abp/settings/setting.service';
 import { MessageService } from '@abp/message/message.service';
 import { AbpMultiTenancyService } from '@abp/multi-tenancy/abp-multi-tenancy.service';
 import { AppSessionService } from '@shared/session/app-session.service';
+// scroll service
+import { ScrollService } from '@shared/utils/scroll.service';
 
 export abstract class AppComponentBase {
 
@@ -22,6 +24,7 @@ export abstract class AppComponentBase {
     multiTenancy: AbpMultiTenancyService;
     appSession: AppSessionService;
     elementRef: ElementRef;
+    scrollService: ScrollService;
 
     constructor(injector: Injector) {
         this.localization = injector.get(LocalizationService);
@@ -33,6 +36,7 @@ export abstract class AppComponentBase {
         this.multiTenancy = injector.get(AbpMultiTenancyService);
         this.appSession = injector.get(AppSessionService);
         this.elementRef = injector.get(ElementRef);
+        this.scrollService = injector.get(ScrollService);
     }
 
     l(key: string, ...args: any[]): string {
