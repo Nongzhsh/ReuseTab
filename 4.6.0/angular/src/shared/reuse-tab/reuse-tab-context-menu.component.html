@@ -1,0 +1,14 @@
+<span [matMenuTriggerFor]="closeMenu"></span>
+<mat-menu #closeMenu="matMenu">
+    <button mat-menu-item (click)="click($event, 'close')" [disabled]="!item.closable">关闭</button>
+    <button mat-menu-item (click)="click($event, 'closeOther')" data-type="closeOther">关闭其它</button>
+    <button mat-menu-item (click)="click($event, 'closeRight')" data-type="closeRight"
+        [disabled]="item.last">关闭右侧</button>
+    <!-- <button mat-menu-item (click)="click($event, 'clear')" data-type="clear">清空</button> -->
+
+    <ng-container *ngIf="customContextMenu!.length > 0">
+        <button mat-menu-divider></button>
+        <button *ngFor="let i of customContextMenu" mat-menu-item [attr.data-type]="i.id" [disabled]="isDisabled(i)"
+            (click)="click($event, 'custom', i)" [innerHTML]="i.title"></button>
+    </ng-container>
+</mat-menu>

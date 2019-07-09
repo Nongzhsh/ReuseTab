@@ -1,0 +1,14 @@
+:host ::ng-deep .mat-tab-label-active {
+    //  cursor: default;
+    //  background-color: #36a3f7;//info
+    //  color: #f8f9fa;//light
+}
+
+.tab_close {
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.tab_close:hover {
+    color: red;
+}

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-// scroll service
+// ReuseTab scroll service
 import { ScrollService } from './scroll.service';
 
 @NgModule({

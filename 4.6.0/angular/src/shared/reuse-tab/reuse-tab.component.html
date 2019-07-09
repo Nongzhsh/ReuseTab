@@ -1,0 +1,12 @@
+<mat-tab-group #tabGroup [(selectedIndex)]="pos" (selectedIndexChange)="selectedIndexChange($event)"
+    animationDuration="0ms">
+    <mat-tab *ngFor="let i of list; let index = index">
+        <ng-template mat-tab-label>
+            <span [reuse-tab-context-menu]="i" [customContextMenu]="customContextMenu">{{i.title}}</span>
+            <button mat-icon-button *ngIf="i.closable" class="tab_close" (click)="_close($event, index, false)">
+                <mat-icon>close</mat-icon>
+            </button>
+        </ng-template>
+    </mat-tab>
+</mat-tab-group>
+<reuse-tab-context (change)="cmChange($event)"></reuse-tab-context>

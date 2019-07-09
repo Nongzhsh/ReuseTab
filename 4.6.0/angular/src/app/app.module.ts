@@ -37,8 +37,10 @@ import { CreateUserDialogComponent } from '@app/users/create-user/create-user-di
 import { EditUserDialogComponent } from '@app/users/edit-user/edit-user-dialog.component';
 import { ChangePasswordComponent } from './users/change-password/change-password.component';
 import { ResetPasswordDialogComponent } from './users/reset-password/reset-password.component';
-// utils
+// ReuseTab
 import { UtilsModule } from '@shared/utils/utils.module';
+import { RouteReuseStrategy } from '@angular/router';
+import { ReuseTabStrategy, ReuseTabService, ReuseTabModule } from '@shared/reuse-tab';
 
 @NgModule({
   declarations: [
@@ -78,9 +80,18 @@ import { UtilsModule } from '@shared/utils/utils.module';
     ServiceProxyModule,
     SharedModule,
     NgxPaginationModule,
+    // ReuseTab
     UtilsModule,
+    ReuseTabModule
   ],
-  providers: [],
+  providers: [
+    // ReuseTab
+    {
+      provide: RouteReuseStrategy,
+      useClass: ReuseTabStrategy,
+      deps: [ReuseTabService]
+    },
+  ],
   entryComponents: [
     // tenants
     CreateTenantDialogComponent,
@@ -94,4 +105,4 @@ import { UtilsModule } from '@shared/utils/utils.module';
     ResetPasswordDialogComponent
   ]
 })
-export class AppModule {}
+export class AppModule { }
